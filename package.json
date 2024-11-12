@@ -1,0 +1,95 @@
+{
+  "name": "vs-spotlight",
+  "displayName": "VS-Spotlight",
+  "description": "Spotlight is a VS Code extension that helps developers maintain focus by highlighting only the relevant files and code sections in their workspace. Like a theater spotlight that illuminates only the important actors on stage, this extension dims the noise and brings attention to what matters most.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "spotlight-explorer",
+          "title": "VS-Spotlight",
+          "icon": "resources/spotlight-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "spotlight-explorer": [
+        {
+          "id": "spotlightExplorer",
+          "name": "Spotlighted Files",
+          "icon": "resources/spotlight-icon.svg",
+          "contextualTitle": "Spotlighted Files"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vs-spotlight.fileSpotlight",
+        "title": "VS-Spotlight: Toggle File Spotlight"
+      },
+      {
+        "command": "vs-spotlight.textSpotlight",
+        "title": "VS-Spotlight: Toggle Text Spotlight"
+      },
+      {
+        "command": "vs-spotlight.removeFromSpotlight",
+        "title": "Remove from Spotlight",
+        "category": "Spotlight"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "vs-spotlight.fileSpotlight",
+          "group": "navigation",
+          "when": "explorerViewletVisible"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "vs-spotlight.clearSpotlight",
+          "when": "view == spotlightExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "vs-spotlight.removeFromSpotlight",
+          "when": "view == spotlightExplorer && viewItem == file",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "iconThemes": [
+      {
+        "id": "spotlight",
+        "label": "Spotlight Icons",
+        "path": "./fileicons/spotlight-icon-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "eslint": "^9.13.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
