@@ -2,10 +2,16 @@
   "name": "vs-spotlight",
   "displayName": "VS-Spotlight",
   "description": "Spotlight is a VS Code extension that helps developers maintain focus by highlighting only the relevant files and code sections in their workspace. Like a theater spotlight that illuminates only the important actors on stage, this extension dims the noise and brings attention to what matters most.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.91.0"
   },
+  "icon": "resources/spotlight-store-icon.jpeg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackmfrost/vs-spotlight"
+  },
+  "publisher": "JackMichaelFrost",
   "categories": [
     "Other"
   ],
@@ -85,11 +91,11 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
-    "eslint": "^9.13.0",
+    "@types/vscode": "^1.91.0",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0"
   }
 }
